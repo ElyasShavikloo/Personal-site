@@ -146,7 +146,7 @@
             </div>
             {% for article in articles %}
                 <div class="col-md-4">
-                    <a href="#">
+                    <a href="{{ article.get_absolut_url }}">
                         <div class="post-content">
                             <figure>
                                 <img src="{{ article.image.url }}" alt="img">
@@ -158,7 +158,13 @@
                                     <i class="fa fa-date"></i>
                                 </figcaption>
                             </figure>
-                            <p >{{ article.body|truncatechars:137 | safe }}</p>
+                            <div>
+                                <h4>{{ article.title }}</h4>
+                                <div>
+                                    <a href="#">{{ article.author }}</a>
+                                </div>
+                            </div>
+                            <p>{{ article.body|truncatechars:137 | safe }}</p>
                         </div>
                     </a>
                 </div>

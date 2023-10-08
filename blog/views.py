@@ -1,3 +1,8 @@
 from django.shortcuts import render
+from .models import Article
 
-# Create your views here.
+
+def details(request, slug):
+    article = Article.objects.get(slug=slug)
+
+    return render(request, 'blog/details.html', context={'article': article})
