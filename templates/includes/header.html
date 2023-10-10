@@ -13,7 +13,35 @@
     <div class="container">
         <div class="row">
             <div class="col-md-2">
-                <img src="{% static 'img/logo.png' %}" alt="" class="logo">
+                <li class="nav-item">
+                    {% if request.user.is_authenticated %}
+                        <div class="d-flex">
+                            {% if request.user.first_name %}
+                                {% if user.profile.user_image %}
+                                    <span><img src="{{ user.profile.user_image.url }}" width="50" height="50"
+                                               style="border-radius: 100%" alt=""></span>
+                                {% else %}
+                                    <span><img src="{% static 'images/icons/profile_user.png' %}" width="35"
+                                               height="35"
+                                               style="border-radius: 100%" alt=""></span>
+                                {% endif %}
+                                <a class="nav-link"
+                                   href="">{{ request.user.first_name }} {{ request.user.last_name }} </a>
+                            {% else %}
+                                <a class="nav-link"
+                                   href="">{{ request.user.username }} </a>
+                            {% endif %}
+
+                            <a href="{% url 'account:logout' %}"><span class="badge badge-danger mt-2">logout</span></a>
+                        </div>
+                    {% else %}
+                        <div class="d-flex">
+                            <a class="nav-link" href="{% url 'account:login' %}">Login</a><span
+                                class="mt-2">/</span>
+                            <a class="nav-link" href="{% url 'account:register' %}">Register</a>
+                        </div>
+                    {% endif %}
+                </li>
             </div>
             <div class="col-md-5">
                 <form method="" action="" class="search-form">
