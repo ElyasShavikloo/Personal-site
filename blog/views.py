@@ -1,10 +1,20 @@
-from django.shortcuts import render
-from .models import Article
+from django.shortcuts import render, redirect
+from .models import Article, Comment
 from django.core.paginator import Paginator
 
 
 def details(request, slug):
     article = Article.objects.get(slug=slug)
+    if request.method == 'POST':
+        parent_id = request.POST.get('parent_id')
+        if parent_id:
+            patent_comment = Comment.objects.get(id=parent_id)
+            body = request.POST.get('body')
+            Comment.objects.create(body=body, article=article, user=request.user, parent_id=patent_comment)
+        else:
+            body = request.POST.get('body')
+            Comment.objects.create(body=body, article=article, user=request.user)
+            return redirect('home:main')
 
     return render(request, 'blog/details.html', context={'article': article})
 
