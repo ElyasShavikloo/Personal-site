@@ -1,11 +1,13 @@
 {% load static %}
+{% load my_template_tags %}
 <div class="main-menu">
     <div class="container">
         <ul>
             <li><a href="{% url 'home:main' %}">صفحه اصلی</a></li>
             <li><a href="{% url 'blog:list' %}">مقالات</a></li>
-            <li><a href="#">تماس</a></li>
+            <li><a href="{% url 'blog:contact_us' %}">تماس با ما</a></li>
             <li><a href="#">درباره</a></li>
+            <li><a href="">{% current_time "%Y-%m-%d %I:%M %p" %}</a></li>
         </ul>
     </div>
 </div>
@@ -13,12 +15,20 @@
     <div class="container">
         <div class="row">
             <div class="col-md-2">
+<<<<<<< HEAD
                 <li>
+=======
+                <li class="nav-item">
+>>>>>>> master
                     {% if request.user.is_authenticated %}
                         <div class="d-flex">
                             {% if request.user.first_name %}
                                 {% if user.profile.user_image %}
+<<<<<<< HEAD
                                     <span><img src="{{ user.profile.user_image.url }}" width="35" height="35"
+=======
+                                    <span><img src="{{ user.profile.user_image.url }}" width="50" height="50"
+>>>>>>> master
                                                style="border-radius: 100%" alt=""></span>
                                 {% else %}
                                     <span><img src="{% static 'images/icons/profile_user.png' %}" width="35"
@@ -44,14 +54,14 @@
                 </li>
             </div>
             <div class="col-md-5">
-                <form method="" action="" class="search-form">
-                    <input type="text" name="" placeholder="جستجو کنید ...">
+                <form method="get" action="{% url 'blog:search' %}" class="search-form">
+                    <input type="text" name="search" placeholder="جستجو کنید ...">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
             </div>
             <div class="col-md-5">
                 <div class="index-h1">
-                    <h1>بهترین و متفاوت ترین مقالات آموزشی</h1>
+                    <h1>وبلاگ مقالات</h1>
                 </div>
             </div>
         </div>

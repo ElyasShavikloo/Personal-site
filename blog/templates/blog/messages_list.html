@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{% endblock %}
+Messages List
+{% block content %}
+    <center>
+        <p style="font-size: 16px;color: #444;">Messages List</p>
+    </center>
+    <div class="content" dir="ltr" style="text-align: center">
+        {% for item in message_list %}
+            <p>{{ item.title }} - {{ item.email }} - {{ item.age }} <span class="btn btn-primary"><a
+                    href="{% url 'blog:message_edit' item.id %}" style="color: black">Edit</a></span>
+                <span class="btn btn-danger"><a href="{% url 'blog:message_delete' item.id %}" style="color: black">Delete</a></span></p>
+            <hr>
+        {% endfor %}
+    </div>
+
+{% endblock %}

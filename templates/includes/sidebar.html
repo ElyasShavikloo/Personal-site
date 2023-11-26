@@ -1,0 +1,68 @@
+{% load static %}
+<div class="col-md-3">
+    <div class="sidebar">
+        <div class="sidebar-text">
+            <p>"به وبلاگ ما خوش آمدید! اینجا مکانی است که ما در مورد موضوعات مختلفی از جمله فناوری، سلامتی، هنر و فرهنگ،
+                تاریخ و سبک زندگی صحبت می‌کنیم. امیدواریم که با خواندن مطالب ما لحظات خوبی را سپری کنید و اطلاعات جدیدی
+                را به دست بیاورید. منتظر نظرات شما هستیم و امیدواریم که اینجا برای شما تجربه‌ای لذت‌بخش باشد."</p>
+        </div>
+        <div class="sidebar-social">
+            <ul>
+                <li>
+                    <a href="https://t.me/Elyasshavikloo" class="telegram"><i class="fa fa-send"></i>دنبال کردن در تلگرام</a>
+                </li>
+                <li>
+                    <a href="https://github.com/ElyasShavikloo"><i class="fa fa-github"></i>گیت هاب</a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/elyas-shavikloo-b82751284/"><i class="fa fa-linkedin"></i>لینکدین</a>
+                </li>
+                <li>
+                    <a href="https://stackoverflow.com/users/22477434/elyas-shavikloo"><i class="fa fa-stack-overflow"></i>استک اور فلو</a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/elyasshavikloo7" class="instagram"><i class="fa fa-instagram"></i>پیج اینستاگرام </a>
+                </li>
+            </ul>
+        </div>
+        <div class="category-sidebar">
+            <span><i class="fa fa-bookmark"></i>مقالات اخیر</span>
+            <ul>
+                {% for item in recent_article %}
+                    <li>
+                        <span>
+                            <a href="{{ item.get_absolut_url }}"> {{ item.title }}
+                            <p>{{ item.body|truncatewords:30 }}</p>
+                            </a>
+                            <div>
+                                <img src="{{ item.image.url }}" alt="img">
+                            </div>
+                        </span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <br><br>
+        <div class="category-sidebar">
+            <span><i class="fa fa-bookmark"></i>دسته بندی ها</span>
+            <ul>
+                {% for category in categories %}
+                    <li><span class="text-primary"><a href="">{{ category.title }}</a></span></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="category-sidebar ads-sidebar">
+            <span><i class="fa fa-slack"></i>تبلیغات</span>
+            <ul>
+                <li>
+                    <a href="#">
+                        <figure>
+                            <img src="{% static 'img/ads/ads1.jpg' %}" alt="">
+                            <figcaption></figcaption>
+                        </figure>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

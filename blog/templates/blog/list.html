@@ -6,9 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    <center>
         <p style="font-size: 16px;color: #444;">مقالات</p>
-    </center>
     <hr>
     <div class="container">
         <div class="row">
@@ -49,11 +47,11 @@
                     {% for item in articles.paginator.page_range %}
                         {% if articles.number == item %}
                             <li class="active"><a href="?page=
-                                    {{ item }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">{{ item }}</a>
+                                    {{ item }}{% if request.GET.search %}&q={{ request.GET.search }}{% endif %}">{{ item }}</a>
                             </li>
                         {% else %}
                             <li><a href="?page=
-                                    {{ item }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">{{ item }}</a>
+                                    {{ item }}{% if request.GET.search %}&q={{ request.GET.search }}{% endif %}">{{ item }}</a>
                             </li>
                         {% endif %}
                     {% endfor %}
@@ -61,7 +59,7 @@
 
                     {% if articles.has_next %}
                         <li><a href="?page=
-                                {{ articles.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"><i
+                                {{ articles.next_page_number }}{% if request.GET.search %}&q={{ request.GET.search }}{% endif %}"><i
                                 class="fa fa-angle-double-right"></i></a></li>
                     {% endif %}
                 </ul>

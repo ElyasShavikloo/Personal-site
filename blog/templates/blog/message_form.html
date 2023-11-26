@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{% endblock %}
+Contact Us
+{% block content %}
+    <center>
+        <p style="font-size: 16px;color: #444;">تماس با ما</p>
+    </center>
+    <div class="content" dir="ltr">
+        <form id="contact" action="" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-lg-12">
+                    <div dir="auto">
+                        {{ form }}
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <fieldset>
+                        <button type="submit" id="form-submit" class="main-button">
+                            Submit
+                        </button>
+                    </fieldset>
+                </div>
+            </div>
+        </form>
+        <div>
+            {% for item in titles %}
+                <p>{{ item.title }}</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
