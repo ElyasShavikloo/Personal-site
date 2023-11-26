@@ -1,2 +1,2 @@
-# Personal-site
+# Weblog
 this project is my personal site.
